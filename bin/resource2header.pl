@@ -62,22 +62,22 @@ $text =~ s/([^\n]{1,76})$/  $1/g;
 close(FILE);
 
 # we are only interested in the actual filename, no paths and stuff
-my $output = basename($input);
+my $file = basename($input);
 
-my $temp = lc($output);
+my $temp = lc($file);
    $temp =~ tr/.-/_/;
-
+   $file    = $file     . ".hpp";
 my $guard   = uc($temp) . "_HPP";
 my $content =    $temp  . "_data";
 my $size    =    $temp  . "_size";
-my $file    = $output   . ".hpp";
+my $output  = $file;
 
 if ($argc == 2)
 {
-  $file = File::Spec->catfile("$ARGV[1]", "$file");
+  $output = File::Spec->catfile("$ARGV[1]", "$file");
 }
 
-open(FILE, ">$file") or die($!);
+open(FILE, ">$output") or die($!);
 printf FILE<<EOF;
 // $file
 
