@@ -25,5 +25,5 @@ MSG_RES2HPP = $(if $(Q),,$(if $(V),@$(ECHO) "  RES2HPP    "$@))
 define dfn_target_rule_RES_H
   $1: $3 $4 $$(dfn_dir_marker)
 	$$(MSG_RES2HPP)
-	$$(V) $$(RES2HPP) $4 $$(BUILD_DIR_$2) $$(S)
+	$$(V) $$(RES2HPP) $4 $$(dir $1) $$(S)
 endef
