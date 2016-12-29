@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #/***************************************************************************
-# *   Copyright (C) 2015 Daniel Mueller (deso@posteo.net)                   *
+# *   Copyright (C) 2015-2016 Daniel Mueller (deso@posteo.net)              *
 # *                                                                         *
 # *   This program is free software: you can redistribute it and/or modify  *
 # *   it under the terms of the GNU General Public License as published by  *
@@ -88,7 +88,7 @@ def main(argv):
   in_ = ns.in_file
   out = ns.out_file
   file_ = basename(out)
-  base = file_.lower().replace(".", "_")
+  base = file_.lower().translate(str.maketrans("-.", "__"))
   guard = "%s" % base.upper()
   content = "%s_data" % base
   size = "%s_size" % base
