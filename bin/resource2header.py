@@ -24,6 +24,7 @@ from argparse import (
 )
 from os.path import (
   basename,
+  splitext,
 )
 from sys import (
   argv as sysargv,
@@ -87,7 +88,7 @@ def main(argv):
 
   in_ = ns.in_file
   out = ns.out_file
-  file_ = basename(out)
+  file_, _ = splitext(basename(out))
   base = file_.lower().translate(str.maketrans("-.", "__"))
   guard = "%s" % base.upper()
   content = "%s_data" % base
